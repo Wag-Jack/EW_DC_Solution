@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="styleshee" href="styles.css">
+    <title>Happy Engineers Week!</title>
+    <script>
+        async function submitPassword(event) {
+            event.preventDefault();
+            const password = document.getElementById('password').value;
+            const response = await fetch('/submit-password', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({password})
+            });
+
+            const data = await response.json();
+            const messageDiv = document.getElementById('message');
+            messageDiv.innerHTML = data.message;
+
+            if (data.success) {
+                document.getElementById('logo').style.display = 'block';
+            } else {
+                document.getElementById('logo').style.display = 'none';
+            }
+        }
+    </script>
+</head>
+<body>
+    <hl>Input Password</hl>
+    <form onsubmit="submitPassword(event)">
+        <input type="password" id="password" placeholder="Enter password" required>
+        <button type="submit">Submit</button>
+    </form>
+    <div id="message"></div>
+    <img src="ew.jpg" alt="Engineering Week 2025" style="display: none; width: 100px">
+</body>
+</html>

@@ -1,22 +1,39 @@
 const express = require('express');
-const app = express();
-const port = 3000;
+require('dotenv/config');
 
-//Test to display
-app.get('/', (req, res) => {
-    res.send('<hl>Hello from Express frontend!</hl><p><a href="/api">Get data from Flask</a></p>');
-});
+const fetch = require('node-fetch');
+const path = require('path');
 
-app.get('/api', async (req, res) => {
+const server = express();
+const port = process.env.PORT; //change port in .env to same as Flask for bug
+
+//Serve static files from 'templates' directory
+server.use(express.static('templates'));
+
+//Parse JSON bodies
+server.use(express.json());
+
+server.post('/validate-password', async (req, res) => {
+    const {password} = req.body;
     try {
-        const response = await fetch('http://localhost:5000/api');
+        const response = await fetch('http://localhost:5000/validate-password', {
+            method: 'POST', //change to GET for bugs
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({password})
+        });
         const data = await response.json();
-        res.send(`<hl>Data from Flask: ${data.message}</hl>`);
+        res.json(data);
     } catch (error) {
-        res.status(500).send('Error connecting to Flask server');
+        res.status(500).json({success: false, message: 'Server error'});
     }
 });
 
-app.listen(port, () => {
-    console.log('Express server running on http://localhost:3000')
+server.listen(port, (error) => {
+    if (!error) {
+        console.log(`Express server running at http://localhost:${port}`)
+    } else {
+        console.log("Error occurred, cannot start Express server: ", error);
+    }
 });
