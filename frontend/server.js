@@ -1,6 +1,7 @@
 const express = require('express');
 const fetch = require('node-fetch');
 const path = require('path');
+const cors = require('cors');
 require('dotenv/config');
 
 const server = express();
@@ -11,6 +12,8 @@ server.use(express.static(path.join(__dirname,'/static')));
 
 //Parse JSON bodies
 server.use(express.json());
+
+server.use(cors());
 
 server.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'templates', 'index.html'));

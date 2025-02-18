@@ -5,7 +5,7 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-#Predefined password, hide password until event?
+#Password will be hidden in README.md lemme cook
 PW = '3ng!neer1ngWeek2o25!'
 
 @app.route('/')

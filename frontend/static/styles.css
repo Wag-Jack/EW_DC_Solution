@@ -1,6 +1,8 @@
 body {
     margin: 0;
     padding: 0;
+    background-color: #002E62;
+    color: #FCC43B;
 }
 
 #project_name {
