@@ -1,51 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
     <title>Design Challenge</title>
     <script>
-        async function submitPassword(event) {
-            event.preventDefault();
-            const password = document.getElementById('password').value;
-            const response = await fetch('/', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({password})
-            });
+      async function submitPassword(event) {
+        event.preventDefault();
+        const password = document.getElementById("password").value;
+        const response = await fetch(
+          "http://127.0.0.1:5000/validate_password",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ password }),
+          }
+        );
 
-            const data = await response.json();
-            const messageDiv = document.getElementById('message');
-            const successMessage = document.getElementById('success');
-            const failMessage = document.getElementById('incorrect');
-            const congratsMessage = document.getElementById('congrats-image');
+        const data = await response.json();
+        const messageDiv = document.getElementById("message");
+        const successMessage = document.getElementById("success");
+        const failMessage = document.getElementById("incorrect");
+        const congratsMessage = document.getElementById("congrats-image");
 
-            messageDiv.innerHTML = data.message;
+        messageDiv.innerHTML = data.message;
 
-            if (data.success) {
-                successMessage.style.display = 'block';
-                failMessage.style.display = 'none';
-                congratsMessage.style.display = 'block';
-            } else {
-                successMessage.style.display = 'none';
-                failMessage.style.display = 'block';
-                congratsMessage.style.display = 'none';
-            }
+        if (data.success) {
+          successMessage.style.display = "block";
+          failMessage.style.display = "none";
+          congratsMessage.style.display = "block";
+        } else {
+          successMessage.style.display = "none";
+          failMessage.style.display = "block";
+          congratsMessage.style.display = "none";
         }
+      }
     </script>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Input Password</h1>
     <form onsubmit="submitPassword(event)">
-        <input type="password" id="password" placeholder="Enter password" required>
-        <input type="submit" value="Enter">
+      <input
+        type="password"
+        id="password"
+        placeholder="Enter password"
+        required
+      />
+      <input type="submit" value="Enter" />
     </form>
     <div id="message"></div>
-    <div id="success" style="display:none;">Congratulations! Happy Engineering Week!</div>
-    <div id="incorrect" style="display:none">Incorrect password, try again</div>
-    <img id="congrats-image" src="ew.jpg" alt="Engineering Week 2025" style="display: none;">
-</body>
+    <div id="success" style="display: none">
+      Congratulations! Happy Engineering Week!
+    </div>
+    <div id="incorrect" style="display: none">
+      Incorrect password, try again
+    </div>
+    <img
+      id="congrats-image"
+      src="ew.jpg"
+      alt="Engineering Week 2025"
+      style="display: none"
+    />
+  </body>
 </html>
