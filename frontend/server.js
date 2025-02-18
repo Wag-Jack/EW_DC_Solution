@@ -6,9 +6,6 @@ require('dotenv/config');
 const server = express();
 const port = process.env.PORT; //change port in .env to same as Flask for bug
 
-//Serve static files from 'templates' directory
-server.use(express.static(path.join(__dirname,'/static')));
-
 //Parse JSON bodies
 server.use(express.json());
 
