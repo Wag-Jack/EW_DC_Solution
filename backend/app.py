@@ -6,21 +6,22 @@ app = Flask(__name__)
 CORS(app)
 
 #Predefined password, hide password until event?
-PW = '3ng!neersWeek2o25!'
+PW = '3ng!neer1ngWeek2o25!'
 
 @app.route('/')
 def hello():
-    return "<p>Hi! I'm alive!</p>"
+    return "<p>The answer hides in bold.</p>" #Come up with something more creative later
 
-@app.route('/validate-password', methods=['POST'])
+@app.route('/', methods=['POST'])
 def validate_password():
     data = request.get_json()
     password = data.get('password')
+    print(f'Recieved password: {password}')
 
     if password == PW:
         return jsonify({"success": True, "message": "Correct!"}), 200
     else:
-        return jsonify({"success": False, "message": "Sorry, try again!"}), 200
+        return jsonify({"success": False, "message": "Sorry, try again!"}), 401
 
 if __name__ == '__main__':
-    app.run() #Change port number in one of the branches?
+    app.run(port=5000) #Change port number in one of the branches?

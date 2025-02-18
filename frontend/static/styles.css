@@ -7,9 +7,8 @@ body {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    color: rgb(255, 255, 255);
-    font-size: 10px;
+    color: #002E62;
+    font-size: larger;
     text-align: center;
     margin: 0;
-    font-size: larger;
 }
