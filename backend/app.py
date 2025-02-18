@@ -6,7 +6,7 @@ app = Flask(__name__)
 CORS(app)
 
 #Password will be hidden in README.md lemme cook
-PW = '3ng!neer1ngWeek2o25!'
+PW = 'apple'
 
 @app.route('/')
 def hello():
