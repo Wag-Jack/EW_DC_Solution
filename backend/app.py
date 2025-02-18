@@ -12,7 +12,7 @@ PW = '3ng!neer1ngWeek2o25!'
 def hello():
     return "<p>The answer hides in bold.</p>" #Come up with something more creative later
 
-@app.route('/', methods=['POST'])
+@app.route('/validate_password', methods=['POST'])
 def validate_password():
     data = request.get_json()
     password = data.get('password')
