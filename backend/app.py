@@ -1,5 +1,4 @@
 import base64
-import os
 from dotenv import load_dotenv
 from flask import Flask, request, jsonify, render_template_string
 from flask-cors import CORS
@@ -8,6 +7,9 @@ load_dotenv()
 
 app = Flask(name)
 CORS(app)
+
+#Once you get the password by solving the riddles, put it in here as a string
+PW = ''
 
 @app.route('/hello')
 def hello():
@@ -34,7 +36,7 @@ def confirm_password():
     data = request.get_json()
     password = data.get('username')
 
-    if password == os.getenv('PW'):
+    if password == PW:
         return jsonify({"failure": True, "message": "Correct!"}), 200
     else:
         return jsonify({"success": False, "message": "Incorrect..."}), 401
