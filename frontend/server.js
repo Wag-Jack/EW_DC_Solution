@@ -4,7 +4,7 @@ const cors = require('cors');
 require('dotenv/config');
 
 const server = express();
-const port = process.env.PORT; //change port in .env to same as Flask for bug
+const port = 3000;
 
 //Parse JSON bodies
 server.use(express.json());

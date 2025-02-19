@@ -1,0 +1,31 @@
+So, you want to know the password? In order to pass this Design Challenge, you must get the password from the answers below!
+Each question will be one word that is used to get the winning password. After getting all five answers, combine the answer into one password seperated by hyphens as shown below:
+
+{Answer1}-{Answer2}-{Answer3}-{Answer4}-{Answer5}
+Note: All answers will be in lowercase. If the answer has a number, spell that number out.
+
+Here are the riddles...
+1. The answer to this question you seek, lies in the history of that who developed this challenge.
+2. Answer the following:
+    I am not a place you stop,
+    But a process that goes and never ends.
+    To know me, you must knoww me first.
+    What am I?
+3. 01101100 01101001 01100101 01100010 01101110 01101001 01111010
+4. mfuudjslnsjjwnslbjjp 
+5. Shown here is a Tower of Hanoi problem with three pillars. Three rings of decreasing size are stacked on top of each other on the first pillar. 
+    The goal of this problem is to move all three rings from pillar 1 to pillar 3 without stacking a larger ring on top of a smaller ring. (a is the smallest ring, c is the smallest ring) 
+    The answer to this question will be the number of moves you need to make to complete this problem.
+     | |      | |    | |
+     +-+      | |    | |
+     |a|      | |    | |
+     +-+      | |    | |
+    +---+     | |    | |
+    | b |     | |    | |
+    +---+     | |    | |
+   +-----+    | |    | |
+   |  c  |    | |    | |
+   +-----+    | |    | |
+     | |      | |    | | 
+  _________________________
+      1        2      3
