@@ -1,15 +1,15 @@
+import base64 as b
+import builtins
+import os
+from dotenv import load_dotenv
 from flask import Flask, request, jsonify, render_template_string
 from flask_cors import CORS
+from pw import pw
 
-import base64 as b #hide
+load_dotenv()
 
-# Setup Flask and CORS for routing
 app = Flask(__name__)
 CORS(app)
-
-#Password will be hidden in README.md lemme cook
-with open('pw.txt', 'r') as pw:
-    PW = b.b16decode(b.b32decode(b.b32hexdecode(b.b64decode(b.b85decode(pw.read().strip()))))).decode('utf-8')
 
 @app.route('/')
 def hello():
@@ -36,13 +36,10 @@ def hello():
 def validate_password():
     data = request.get_json()
     password = data.get('password')
-    print(f'Recieved password: {password}')
 
-    if password == PW:
-        print('Correct password!')
+    if password == os.getenv('PW'):
         return jsonify({"success": True, "message": "Correct!"}), 200
     else:
-        print('Incorrect password')
         return jsonify({"success": False, "message": "Incorrect..."}), 401
 
 if __name__ == '__main__':
