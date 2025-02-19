@@ -10,7 +10,6 @@ CORS(app)
 #Password will be hidden in README.md lemme cook
 with open('pw.txt', 'r') as pw:
     PW = b.b16decode(b.b32decode(b.b32hexdecode(b.b64decode(b.b85decode(pw.read().strip()))))).decode('utf-8')
-    print(PW)
 
 @app.route('/')
 def hello():
