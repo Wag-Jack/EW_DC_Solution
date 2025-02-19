@@ -1,15 +1,101 @@
-Welcome to the Design Challenge for Engineers Week 2025!
+# Welcome to the Warp Design Challenge for Engineering Week 2025!
 
-Challenge:
-Given here is a respository that you need to go through and find any and all bugs. This can be anything up to and including:
-- merge conflicts between 'main' and 'dev' branches
-- bugs with communicating between the frontend and backend
-- issues with server setup
-- etc.
+## Challenge Description
 
-The goal is to fix these errors and resolve merge conflicts so that, in the end, you're able to enter a password and display the Engineers Week logo, thus signaling you successfully fixed all issues!
+**Oh no! We found this jumbled up Github Repo and it seems to be a website locked down by a (very secure) password. Can you help us crack it?**__
 
-Installing dependencies:
-Flask:
-Express:
-Node.js:
+In total, you will find <ins>**25**</ins> bugs to in this repository preventing you from accessing the goal. This can be anything up to and including:__
+- *merge conflicts between 'main' and 'dev' branches*__
+- *syntax errors*__
+- *misnamed functions and variables*__
+*and more!*__
+__
+Additionally, in order to show the Engineering Week logo at the end, you're going to need to enter a password which is lost in space! Fortunately, when you access the webpage being hosted by the Flask backend, you will be directed to a page full of riddles to solve to get the password!
+
+## The Goal
+***Debug the entire repository so that you're able to </ins>properly merge main and dev</ins>, <ins>see the riddles on the backend</ins>, and <ins>get the Engineering Week logo to show up when accessing the webpage!</ins>***__
+![What you need to show us to show that you won!](/proof.png)
+
+## Instructions
+*Before you begin, make sure you have an <ins>IDE (VS Code)</ins>, <int>Git</ins>, and <ins>Python 3.13.1</ins> set up on your device. You will be needing these to clone this repository and debug the programs!*
+
+### Clone the repository.
+Open up VS Code and open a new terminal (`Ctrl+Shift+\`` in VS Code on Windows). Navigate to a directory that you want to store the repository files in. For sake of ease, we'll navigate to the Desktop:
+```
+cd Desktop
+```
+Next, we'll clone the repository into this directory using the following:
+```
+git clone https://github.com/Wag-Jack/EW_DC_2025.git
+```
+Now you can open the cloned repository through a folder on your Desktop! To open this folder in VS Code, type `Ctrl+K``Ctrl+O`, find the folder in your Desktop folder, and hit `Select Folder`. Now you have the repository on your local machine, and we can set up everything else to get you debugging! Make sure you keep this terminal open, as we're going to need it for the next steps!
+
+### Python (Flask) / Backend Setup
+Start by ensuring you are running a virtual environment in the backend directory. In your terminal and go to the backend directory:
+```
+cd backend
+```
+Next, run the following to create your virtual environment:
+```
+python -m venv venv
+```
+Then, depending on what you system is, use the following script to activate the virtual environment:__
+**Windows:**
+```
+.\venv\Scripts\activate
+```
+**macOS/Linux:**
+```
+source venv/bin/activate
+```
+*If you're having any issues running the virtual environment on Windows, execute the following command to change your terminal's execution policy:*
+```
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+```
+Now we're able to install everything we need to get rolling! All of our Python libraries (including Flask) are included in `requirements.txt`, so we'll install them all at once:
+```
+pip install -r requirements.txt
+```
+Once this is done, you should be able to import from `dotenv`, `flask`, and `flask-cors`. This means that your backend is configured! (minus the bugs...)
+
+### Express.js / Frontend Setup
+Ensure that you downloaded and ran the Node.js installer from their [official website]{https://nodejs.org/en/download}. Once this is done, let's move over to the frontend directory:
+```
+cd ..
+cd frontend
+```
+We already have everything initialized, so it's a matter of installing the packages on your end. Run the following three install scripts one after the other to get the necessary requirements downloaded:
+```
+npm install express
+npm path
+npm cors
+```
+Now that you have everything installed, it's time to start debugging!
+
+### Running The Website
+When testing to see if everything works, you need to run the Flask (`backend`) server and the Express.js (`frontend`) servers at the same time so they are communicating with one another. To run these scripts, do the following ***in seperate terminals:***__
+**In your `backend` directory, execute this script in your terminal:**
+```
+python app.py
+```
+You should get the following output:
+```
+ * Serving Flask app 'app'
+ * Debug mode: off
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead. a production WSGI server instead.
+ * Running on http://127.0.0.1:5000
+Press CTRL+C to quit
+```
+Accessing `https://127.0.0.1:5000` will let you see the riddles you need to solve for the password!__
+
+**In your `frontend` directory, execute this script in your terminal:**
+```
+node server.js
+```
+You should get the following output:
+```
+Express server running at http://localhost:3000
+```
+Accessing `https://localhost:3000` will let you access the password submission screen. Here you can enter the password and, if correct, the Engineering Week logo will show up!__
+__
+**Good luck, and happy hacking!**

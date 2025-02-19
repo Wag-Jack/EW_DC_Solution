@@ -1,3 +1,0 @@
-dotenv
-Flask
-Flask-Cors
