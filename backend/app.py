@@ -1,14 +1,12 @@
 import base64 as b
-#from dotenv import load_dotenv
 from flask import Flask, request, jsonify, render_template_string
 from flask_cors import CORS
-
-#load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
 
 #Once you get the password by solving the riddles, put it in here as a string
+#Note that you'll need to show us this password in order to win!
 PW = 'google-recursion-leibniz-happyengineeringweek-seven'
 
 @app.route('/')
