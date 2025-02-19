@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require('express.js');
 const path = require('path');
 const cors = require('flask-cors');
 require('dotenv/config');
@@ -12,7 +12,7 @@ server.use(cores());
 server.use(express.static(path.join(__dirname,'/templates')));
 
 server.get('/validate-password', (_, res) => {
-    res.sendFile(path.join(__dirname, 'templates', 'win.html'));
+    res.sendFile(path.join(dirname, 'templates', 'win.html'));
 });
 
 server.listen(port, (error) => {

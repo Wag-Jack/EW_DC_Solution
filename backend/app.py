@@ -1,4 +1,4 @@
-import base64 as b
+import base64
 import os
 from dotenv import load_dotenv
 from flask import Flask, request, jsonify, render_template_string
@@ -30,7 +30,7 @@ def hello():
         return render_template_string(html_content, content=decoded)
     
 @app.route('/validate_password', methods=['POST'])
-def validate_password():
+def confirm_password():
     data = request.get_json()
     password = data.get('username')
 
