@@ -25,6 +25,7 @@
         const successMessage = document.getElementById("success");
         const failMessage = document.getElementById("correct");
         const congratsMessage = document.getElementById("congrats-image");
+        const goodbyeMessage = document.getElementById("goodbye");
 
         messageDiv.innerHTLM = data.message;
 
@@ -32,10 +33,12 @@
           successMessage.style.display = "block";
           failMessage.style.display = "none";
           congratsMessage.style.display = "block";
+          goodbyeMessage.style.display = "block";
         } else {
           successMessage.style.display = "none";
           failMessage.style.display = "block";
           congratsMessage.style.display = "none";
+          goodbyeMessage.style.display = "none";
         }
       }
     </script>
@@ -57,6 +60,9 @@
     </div>
     <div id="incorrect" style="display: none">
       Try again!
+    </div>
+    <div id="goodbye" style="display:none">
+      Thank you for coming to this Design Challenge! GDGC, AIC, GWC, WiCS, and DoD appreciate it!
     </div>
     <img
       id="congrats-picture"
