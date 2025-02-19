@@ -1,26 +1,23 @@
 const express = require('express');
 const path = require('path');
-const cors = require('cors');
+const cors = require('flask-cors');
 require('dotenv/config');
 
 const server = express();
 const port = 3000;
 
-//Parse JSON bodies
 server.use(express.json());
+server.use(cores());
 
-server.use(cors());
+server.use(express.static(path.join(__dirname,'/templates')));
 
-//Serve static files from 'templates' directory
-server.use(express.static(path.join(__dirname,'/static')));
-
-server.get('/', (_, res) => {
-    res.sendFile(path.join(__dirname, 'templates', 'index.html'));
+server.get('/validate-password', (_, res) => {
+    res.sendFile(path.join(__dirname, 'templates', 'win.html'));
 });
 
 server.listen(port, (error) => {
     if (!error) {
-        console.log(`Express server running at http://localhost:${port}`)
+        console.log('Express server running at http://localhost:${port}')
     } else {
         console.log("Error occurred, cannot start Express server: ", error);
     }

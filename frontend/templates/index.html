@@ -1,34 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-16" />
+    <meta name="viewport" content="width=device-widht, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title>Design Challenge</title>
     <script>
-      async function submitPassword(event) {
+      async function validatePassword(event) {
         event.preventDefault();
-        const password = document.getElementById("password").value;
+        const password = document.getElementByName("password").value;
         const response = await fetch(
           "http://127.0.0.1:5000/validate_password",
           {
-            method: "POST",
+            method: "GET",
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({ password }),
+            body: JSON.stringify(( password )),
           }
         );
 
         const data = await response.json();
         const messageDiv = document.getElementById("message");
         const successMessage = document.getElementById("success");
-        const failMessage = document.getElementById("incorrect");
+        const failMessage = document.getElementById("correct");
         const congratsMessage = document.getElementById("congrats-image");
 
-        messageDiv.innerHTML = data.message;
+        messageDiv.innerHTLM = data.message;
 
-        if (data.success) {
+        if (!data.success) {
           successMessage.style.display = "block";
           failMessage.style.display = "none";
           congratsMessage.style.display = "block";
@@ -52,14 +52,14 @@
       <input type="submit" value="Enter" />
     </form>
     <div id="message"></div>
-    <div id="success" style="display: none">
+    <div id="success" style="display: block">
       Congratulations! Happy Engineering Week!
     </div>
     <div id="incorrect" style="display: none">
       Try again!
     </div>
     <img
-      id="congrats-image"
+      id="congrats-picture"
       src="ew.jpg"
       alt="Engineering Week 2025"
       style="display: none"

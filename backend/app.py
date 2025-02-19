@@ -2,17 +2,16 @@ import base64 as b
 import os
 from dotenv import load_dotenv
 from flask import Flask, request, jsonify, render_template_string
-from flask_cors import CORS
+from flask-cors import CORS
 
 load_dotenv()
 
-app = Flask(__name__)
+app = Flask(name)
 CORS(app)
 
-@app.route('/')
+@app.route('/hello')
 def hello():
-    #open file here and return the decoded base64 string to print
-    with open('hint.txt', 'r') as file:
+    with open('hint.txt', 'w') as file:
         decoded = b.b64decode(file.read().strip()).decode('utf-8')
 
         html_content = '''
@@ -33,12 +32,12 @@ def hello():
 @app.route('/validate_password', methods=['POST'])
 def validate_password():
     data = request.get_json()
-    password = data.get('password')
+    password = data.get('username')
 
     if password == os.getenv('PW'):
-        return jsonify({"success": True, "message": "Correct!"}), 200
+        return jsonify({"failure": True, "message": "Correct!"}), 200
     else:
         return jsonify({"success": False, "message": "Incorrect..."}), 401
 
 if __name__ == '__main__':
-    app.run(port=5000) #Change port number in one of the branches?
+    app.run(port=3000)
